@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
+import { FAKE_USER } from "../utils/fakeUser";
 
 const AuthContext = createContext()
 
@@ -25,13 +26,6 @@ function reducer(state, action) {
       throw new Error("Unknown Action")
   }
 }
-
-const FAKE_USER = {
-  name: "Jack",
-  email: "jack@example.com",
-  password: "qwerty",
-  avatar: "https://i.pravatar.cc/100?u=zz",
-};
 
 function AuthProvider({ children }) {
   const [{ user, isAuthenticated }, dispatch] = useReducer(reducer, initialState)

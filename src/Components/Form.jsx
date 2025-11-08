@@ -9,14 +9,7 @@ import Message from './Message'
 import Spinner from '../Components/Spinner'
 import DatePicker from "react-datepicker";
 import { useCities } from "../contexts/CitiesContext";
-
-export function convertToEmoji(countryCode) {
-  const codePoints = countryCode
-    .toUpperCase()
-    .split("")
-    .map((char) => 127397 + char.charCodeAt());
-  return String.fromCodePoint(...codePoints);
-}
+import { convertToEmoji } from "../utils/convertToEmoji";
 
 const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client"
 
@@ -61,23 +54,6 @@ function Form() {
 
   if (isLoadingGeocoding) return <Spinner />
   if (geocodingError) return <Message message={geocodingError} />
-
-  // useEffect(() => {
-  //   async function fetchCityData() {
-  //     try {
-  //       setIsLoadingGeocoding(true)
-  //       const res = await fetch(`${BASE_URL}?latitude=${lat}&longitude=${lng}`)
-  //       const data = await res.json
-  //       console.log("City data:", data);
-  //       setCityName(data.city || data.locality || "")
-  //       setCountry(data.countryName)
-  //       setEmoji(convertToEmoji(data.countryCode))
-  //     } finally {
-  //       setIsLoadingGeocoding(false)
-  //     }
-  //   }
-  //   fetchCityData()
-  // }, [lat, lng])
 
   async function handleSubmit(e) {
     e.preventDefault()

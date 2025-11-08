@@ -65,9 +65,6 @@ function CitiesProvider({ children }) {
     reducer,
     initialState
   )
-  // const [cities, setCities] = useState([])
-  // const [isLoading, setIsLoaoding] = useState(false)
-  // const [currentCity, setCurrentCity] = useState({})
 
   useEffect(() => {
     async function fetchCities() {
